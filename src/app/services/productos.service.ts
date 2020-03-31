@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductosService {
 
-  cargando: true;
+  cargando = true;
 
   constructor( private http: HttpClient ) {
 
