@@ -8,6 +8,7 @@ import { Producto } from '../interfaces/producto.interface';
 export class ProductosService {
 
   cargando = true;
+  productos: Producto[] = [];
 
   constructor( private http: HttpClient ) {
 
@@ -17,8 +18,8 @@ export class ProductosService {
   private cargarProductos() {
     this.http.get('https://angular-html-9f6ac.firebaseio.com/productos_idx.json')
         .subscribe( (resp: Producto[]) => {
-
-          console.log(resp);
+          this.productos = resp;
+          // console.log(resp);
           this.cargando = false;
         });
   }
