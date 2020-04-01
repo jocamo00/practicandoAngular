@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoPaginaService } from 'src/app/services/info-pagina.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +10,20 @@ import { InfoPaginaService } from 'src/app/services/info-pagina.service';
 export class HeaderComponent implements OnInit {
 
   // tslint:disable-next-line: variable-name
-  constructor( public _servicio: InfoPaginaService ) { }
+  constructor( public _servicio: InfoPaginaService,
+               private router: Router ) { }
 
   ngOnInit(): void {
   }
 
 
   buscarProducto( termino: string ) {
-      console.log(termino);
+
+    if ( termino.length < 1 ) {
+      return;
+    }
+
+    this.router.navigate(['/search', termino]);
   }
 
 }
