@@ -10,6 +10,9 @@ import { ProductoDescripcion } from '../../interfaces/producto-descripcion.inter
 })
 export class ItemComponent implements OnInit {
 
+  producto: ProductoDescripcion;
+  id: string;
+
   constructor( private route: ActivatedRoute,
                public productoService: ProductosService ) { }
 
@@ -25,7 +28,10 @@ export class ItemComponent implements OnInit {
           // tslint:disable-next-line: no-string-literal
           this.productoService.getProducto(parametros['id'])
               .subscribe( (producto: ProductoDescripcion) => {
-                console.log(producto);
+                // tslint:disable-next-line: no-string-literal
+                this.id = parametros['id'];
+                this.producto = producto;
+                // console.log(producto);
               });
         });
   }
